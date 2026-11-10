@@ -3,12 +3,18 @@
   "author": "A.A. Markevich",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 100 },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 100, "attrs": {} },
     { "type": "wokwi-lcd1602", "id": "lcd", "top": -120, "left": 120, "attrs": { "pins": "i2c" } },
-    { "type": "wokwi-membrane-keypad", "id": "keypad", "top": 220, "left": -150 },
-    { "type": "wokwi-servo", "id": "servo", "top": 320, "left": 450 },
-    { "type": "wokwi-buzzer", "id": "buzzer", "top": -50, "left": -100 },
-    { "type": "wokwi-led", "id": "led_green", "top": 100, "left": 450, "attrs": { "color": "green" } },
+    { "type": "wokwi-membrane-keypad", "id": "keypad", "top": 220, "left": -150, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo", "top": 320, "left": 450, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": -50, "left": -100, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 100,
+      "left": 450,
+      "attrs": { "color": "green" }
+    },
     { "type": "wokwi-led", "id": "led_red", "top": 150, "left": 450, "attrs": { "color": "red" } }
   ],
   "connections": [
@@ -16,7 +22,6 @@
     [ "uno:A5", "lcd:SCL", "yellow", [ "v0" ] ],
     [ "uno:5V", "lcd:VCC", "red", [ "v0" ] ],
     [ "uno:GND", "lcd:GND", "black", [ "v0" ] ],
-
     [ "keypad:R1", "uno:9", "purple", [ "v0" ] ],
     [ "keypad:R2", "uno:8", "purple", [ "v0" ] ],
     [ "keypad:R3", "uno:7", "purple", [ "v0" ] ],
@@ -25,17 +30,18 @@
     [ "keypad:C2", "uno:4", "white", [ "v0" ] ],
     [ "keypad:C3", "uno:3", "white", [ "v0" ] ],
     [ "keypad:C4", "uno:2", "white", [ "v0" ] ],
-
     [ "uno:10", "servo:PWM", "orange", [ "v0" ] ],
     [ "uno:5V", "servo:VCC", "red", [ "v0" ] ],
     [ "uno:GND", "servo:GND", "black", [ "v0" ] ],
-
     [ "uno:11", "buzzer:1", "brown", [ "v0" ] ],
     [ "uno:GND", "buzzer:2", "black", [ "v0" ] ],
-
     [ "uno:12", "led_green:A", "green", [ "v0" ] ],
     [ "uno:GND", "led_green:C", "black", [ "v0" ] ],
     [ "uno:13", "led_red:A", "red", [ "v0" ] ],
-    [ "uno:GND", "led_red:C", "black", [ "v0" ] ]
-  ]
+    [ "uno:GND", "led_red:C", "black", [ "v0" ] ],
+    [ "lcd:GND", "uno:GND.1", "black", [ "h-8.8", "v203.2", "h96" ] ],
+    [ "servo:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "servo:V+", "uno:5V", "red", [ "h0" ] ]
+  ],
+  "dependencies": {}
 }
